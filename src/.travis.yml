@@ -1,0 +1,9 @@
+sudo: required
+services:
+  - docker
+
+before_install:
+  - docker build -t appcicd/react-docker -f Dockerfile.dev .
+
+script:
+  - docker run appcicd/react-docker npm run test -- -- coverage
